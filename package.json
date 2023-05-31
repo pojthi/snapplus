@@ -1,0 +1,35 @@
+{
+    "name": "ta-web-api",
+    "version": "1.0.0",
+    "description": "SnapPlus Backend APIs.",
+    "main": "index.js",
+    "scripts": {
+        "start": "node app.js",
+        "test": "node_modules/.bin/mocha --expose-gc test/test-conn-pool.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "config": "^3.3.3",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "express-basic-auth": "^1.2.1",
+        "ldapjs": "^2.2.3",
+        "log4js": "^6.3.0",
+        "mocha": "^8.2.1",
+        "mssql": "^6.2.3",
+        "promise": "^8.1.0",
+        "sequelize": "^6.3.5",
+        "simple-statistics": "^7.3.2",
+        "soap": "^0.42.0",
+        "swagger-jsdoc": "^6.0.0-rc.4",
+        "swagger-ui-express": "^4.1.5",
+        "tedious": "^9.2.1",
+        "tedious-connection-pool": "^1.0.5"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.6"
+    }
+}

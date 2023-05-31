@@ -1,0 +1,1479 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "P01.02.0603",
+        "title": "SnapPlus APIs - [PROD - build 2022-10-12 11:30:00]",
+        "description": "Time attendance system backend APIs document.",
+        "contact": {
+            "email": "ta.hrms@pt.co.th"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "schemes": ["http", "https"],
+    "host": "timeattendance-api.pt.co.th",
+    "basePath": "/api",
+    "securityDefinitions": {
+        "basicAuth": {
+            "type": "basic"
+        }
+    },
+    "security": [{ "basicAuth": [] }],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/authenticate": {
+            "post": {
+                "summary": "LDAP Authentication",
+                "description": "LDAP Authentication",
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "authen object",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "AuthenParam": {
+                                "type": "object",
+                                "$ref": "#/definitions/AuthenParam"
+                            }
+                        }
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/LDAPAuthenResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/findBranchByNameList/{brnName}": {
+            "get": {
+                "summary": "Get branch by name list",
+                "description": "Find branch by name list",
+                "produces": ["application/json"],
+                "parameters": [{
+                    "name": "brnName",
+                    "in": "path",
+                    "description": "Branch Name",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/BranchResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getEmployeeBrnDetailByEmpId/{empId}": {
+            "get": {
+                "summary": "Get employee detail",
+                "description": "Get employee detail",
+                "produces": ["application/json"],
+                "parameters": [{
+                    "name": "empId",
+                    "in": "path",
+                    "description": "Employee ID",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/EmployeeBrnDetailResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/findEmployeePosByPosCode/{posCode}": {
+            "get": {
+                "summary": "Find employee position",
+                "description": "Find employee position",
+                "produces": ["application/json"],
+                "parameters": [{
+                    "name": "posCode",
+                    "in": "path",
+                    "description": "Position Code",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/EmployeePosResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/findEmployeePosByPosName/{posName}": {
+            "get": {
+                "summary": "Find employee position",
+                "description": "Find employee position",
+                "produces": ["application/json"],
+                "parameters": [{
+                    "name": "posName",
+                    "in": "path",
+                    "description": "Position Name",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/EmployeePosResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getEmployeeUnderByEmpId/{empId}": {
+            "get": {
+                "summary": "Find employee under position",
+                "description": "Find employee under position",
+                "produces": ["application/json"],
+                "parameters": [{
+                    "name": "empId",
+                    "in": "path",
+                    "description": "Employee ID",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/EmployeeUnderResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/saveActivityLog": {
+            "post": {
+                "summary": "Save activity log",
+                "description": "Save activity log",
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "activity log object",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "ActivityLogParam": {
+                                "type": "object",
+                                "$ref": "#/definitions/ActivityLogParam"
+                            }
+                        }
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ActivityLogResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/saveActivateBrn": {
+            "post": {
+                "summary": "Save activate branch",
+                "description": "Save activate branch",
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "activate branch object",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "ActivateBrnParam": {
+                                "type": "object",
+                                "$ref": "#/definitions/ActivateBrnParam"
+                            }
+                        }
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ActivateBrnSaveResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/saveScanTrans": {
+            "post": {
+                "summary": "Save scan trans",
+                "description": "Save scan trans",
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "scan trans object",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "ScanTransParam": {
+                                "type": "object",
+                                "$ref": "#/definitions/ScanTransParam"
+                            }
+                        }
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ScanTransResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getScanTransDetail/{empId}/{scanDate}": {
+            "get": {
+                "summary": "Get scan trans detail",
+                "description": "Get scan trans detail",
+                "produces": ["application/json"],
+                "parameters": [{
+                        "name": "empId",
+                        "in": "path",
+                        "description": "Employee ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "scanDate",
+                        "in": "path",
+                        "description": "Scan Date",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ScanTransDetailResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getActivateBrn/{macAddr}": {
+            "get": {
+                "summary": "Get activate branch data",
+                "description": "Get activate branch data",
+                "produces": ["application/json"],
+                "parameters": [{
+                    "name": "macAddr",
+                    "in": "path",
+                    "description": "Mac Address",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ActivateBrnGetResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/saveRole": {
+            "post": {
+                "summary": "Save role",
+                "description": "Save role permission",
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "role object",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "RoleParam": {
+                                "type": "object",
+                                "$ref": "#/definitions/RoleParam"
+                            }
+                        }
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/RoleSaveResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getScanTransReport/{empId}/{scanFromDate}/{scanToDate}": {
+            "get": {
+                "summary": "Get scan trans report",
+                "description": "Get scan trans report",
+                "produces": ["application/json"],
+                "parameters": [{
+                        "name": "empId",
+                        "in": "path",
+                        "description": "Employee ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "scanFromDate",
+                        "in": "path",
+                        "description": "Scan From Date",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "scanToDate",
+                        "in": "path",
+                        "description": "Scan To Date",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ScanTransReportResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getActivityLogReport/{empId}/{dateFrom}/{dateTo}": {
+            "get": {
+                "summary": "Get scan trans report",
+                "description": "Get scan trans report",
+                "produces": ["application/json"],
+                "parameters": [{
+                        "name": "empId",
+                        "in": "path",
+                        "description": "Employee ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "dateFrom",
+                        "in": "path",
+                        "description": "From Date",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "dateTo",
+                        "in": "path",
+                        "description": "To Date",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ActivityLogReportResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getActivityLogNoCameraReport/{dateFrom}/{dateTo}": {
+            "get": {
+                "summary": "Get scan trans report",
+                "description": "Get scan trans report",
+                "produces": ["application/json"],
+                "parameters": [{
+                        "name": "dateFrom",
+                        "in": "path",
+                        "description": "From Date",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "dateTo",
+                        "in": "path",
+                        "description": "To Date",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ActivityLogNoCameraReportResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getRoleConfigList": {
+            "get": {
+                "summary": "Get Role Config",
+                "description": "Get role config list",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/RoleConfigListResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/saveRoleConfig": {
+            "post": {
+                "summary": "Save role config",
+                "description": "Save role config",
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "role object",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "RoleConfigParam": {
+                                "type": "object",
+                                "$ref": "#/definitions/RoleConfigParam"
+                            }
+                        }
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/RoleConfigSaveResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getRoleByEmpId/{empId}": {
+            "get": {
+                "summary": "Get role detail",
+                "description": "Get role detail",
+                "produces": ["application/json"],
+                "parameters": [{
+                    "name": "empId",
+                    "in": "path",
+                    "description": "Employee ID",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/RoleDetailResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getHealthCheck": {
+            "get": {
+                "summary": "Get Health Check Status",
+                "description": "Get Health Check Status",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/HealthCheckResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/checkExportFile": {
+            "get": {
+                "summary": "Get Export File to HRIS Status",
+                "description": "Get Export File to HRIS Status",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/CheckExportFileResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getReportScanByEmployeeId/{empId}/{fromDate}/{toDate}": {
+            "get": {
+                "summary": "Get scan trans report",
+                "description": "Get scan trans report",
+                "produces": ["application/json"],
+                "parameters": [{
+                        "name": "empId",
+                        "in": "path",
+                        "description": "Employee ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "fromDate",
+                        "in": "path",
+                        "description": "Scan From Date",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "toDate",
+                        "in": "path",
+                        "description": "Scan To Date",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ReportScanByEmployeeIdResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getReportScanByManagerId/{empId}/{fromDate}/{toDate}": {
+            "get": {
+                "summary": "Get scan trans report",
+                "description": "Get scan trans report",
+                "produces": ["application/json"],
+                "parameters": [{
+                        "name": "empId",
+                        "in": "path",
+                        "description": "Employee ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "fromDate",
+                        "in": "path",
+                        "description": "Scan From Date",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "toDate",
+                        "in": "path",
+                        "description": "Scan To Date",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ReportScanByManagerIdResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/saveTempStaff": {
+            "post": {
+                "summary": "Save Temp Staff",
+                "description": "Save Temp Staff",
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "temp staff object",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "TempStaffParam": {
+                                "type": "object",
+                                "$ref": "#/definitions/TempStaffParam"
+                            }
+                        }
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TempStaffResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/updateTempStaff": {
+            "post": {
+                "summary": "Update Temp Staff",
+                "description": "Update Temp Staff",
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "temp staff object",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "TempStaffParam": {
+                                "type": "object",
+                                "$ref": "#/definitions/TempStaffParam"
+                            }
+                        }
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TempStaffResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getTempStaff/{EMP_ID}": {
+            "get": {
+                "summary": "Get data",
+                "description": "Get data",
+                "produces": ["application/json"],
+                "parameters": [{
+                    "name": "EMP_ID",
+                    "in": "path",
+                    "description": "EMP_ID",
+                    "required": true,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TempStaffGetResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/listTempStaff/{KEYWORD}": {
+            "get": {
+                "summary": "Get listTempStaff data",
+                "description": "Get listTempStaff data",
+                "produces": ["application/json"],
+                "parameters": [{
+                    "name": "KEYWORD",
+                    "in": "path",
+                    "description": "KEYWORD",
+                    "required": false,
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/TempStaffGetResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+
+    "definitions": {
+        "AuthenParam": {
+            "type": "object",
+            "properties": {
+                "userName": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "ActivityLogParam": {
+            "type": "object",
+            "properties": {
+                "empId": {
+                    "type": "string"
+                },
+                "empFullNameTH": {
+                    "type": "string"
+                },
+                "brnCode": {
+                    "type": "string"
+                },
+                "brnCodeName": {
+                    "type": "string"
+                },
+                "posCode": {
+                    "type": "string"
+                },
+                "posCodeName": {
+                    "type": "string"
+                },
+                "stampTime": {
+                    "type": "string"
+                },
+                "func": {
+                    "type": "string"
+                },
+                "snapImg": {
+                    "type": "string"
+                },
+                "lat": {
+                    "type": "string"
+                },
+                "lot": {
+                    "type": "string"
+                },
+                "createdDate": {
+                    "type": "string"
+                },
+                "createdBy": {
+                    "type": "string"
+                }
+            }
+        },
+        "ActivateBrnParam": {
+            "type": "object",
+            "properties": {
+                "brnCode": {
+                    "type": "string"
+                },
+                "brnName": {
+                    "type": "string"
+                },
+                "macAddr": {
+                    "type": "string"
+                },
+                "lat": {
+                    "type": "string"
+                },
+                "lot": {
+                    "type": "string"
+                },
+                "createdDate": {
+                    "type": "string"
+                },
+                "createdBy": {
+                    "type": "string"
+                }
+            }
+        },
+        "ScanTransParam": {
+            "type": "object",
+            "properties": {
+                "userName": {
+                    "type": "string"
+                },
+                "direction": {
+                    "type": "string"
+                },
+                "ipSource": {
+                    "type": "string"
+                },
+                "qrTime": {
+                    "type": "string"
+                },
+                "lat": {
+                    "type": "string"
+                },
+                "lot": {
+                    "type": "string"
+                },
+                "updateTs": {
+                    "type": "string"
+                },
+                "branch": {
+                    "type": "string"
+                },
+                "brnLat": {
+                    "type": "string"
+                },
+                "brnLot": {
+                    "type": "string"
+                },
+                "deviceId": {
+                    "type": "string"
+                },
+                "hash": {
+                    "type": "string"
+                },
+                "picUrl": {
+                    "type": "string"
+                },
+                "empId": {
+                    "type": "string"
+                },
+                "brnCode": {
+                    "type": "string"
+                },
+                "posCode": {
+                    "type": "string"
+                },
+                "posCodeName": {
+                    "type": "string"
+                },
+                "createdDate": {
+                    "type": "string"
+                },
+                "createdBy": {
+                    "type": "string"
+                }
+            }
+        },
+        "RoleParam": {
+            "type": "object",
+            "properties": {
+                "roleCode": {
+                    "type": "string"
+                },
+                "roleName": {
+                    "type": "string"
+                },
+                "posCode": {
+                    "type": "string"
+                },
+                "createdDate": {
+                    "type": "string"
+                },
+                "createdBy": {
+                    "type": "string"
+                }
+            }
+        },
+        "RoleConfigParam": {
+            "type": "object",
+            "properties": {
+                "roleCode": {
+                    "type": "string"
+                },
+                "roleName": {
+                    "type": "string"
+                },
+                "createdDate": {
+                    "type": "string"
+                },
+                "createdBy": {
+                    "type": "string"
+                }
+            }
+        },
+        "LDAPAuthenResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "object",
+                    "properties": {
+                        "dn": {
+                            "type": "string"
+                        },
+                        "controls": {
+                            "type": "string"
+                        },
+                        "uid": {
+                            "type": "string"
+                        },
+                        "cn": {
+                            "type": "string"
+                        },
+                        "givenName": {
+                            "type": "string"
+                        },
+                        "sn": {
+                            "type": "string"
+                        },
+                        "mail": {
+                            "type": "string"
+                        },
+                        "telephoneNumber": {
+                            "type": "string"
+                        },
+                        "assignedDashboard": {
+                            "type": "string"
+                        },
+                        "inetUserStatus": {
+                            "type": "string"
+                        },
+                        "iplanet-am-user-password-reset-force-reset": {
+                            "type": "string"
+                        },
+                        "sunAMAuthInvalidAttemptsData": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "BranchResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "object",
+                    "properties": {
+                        "BRN_CODE": {
+                            "type": "string"
+                        },
+                        "BRN_NAME": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "EmployeeBrnDetailResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "object",
+                    "properties": {
+                        "EMP_ID": {
+                            "type": "string"
+                        },
+                        "EMP_FULLNAME_TH": {
+                            "type": "string"
+                        },
+                        "POS_CODE": {
+                            "type": "string"
+                        },
+                        "POS_NAME_TH": {
+                            "type": "string"
+                        },
+                        "DEPT_CODE": {
+                            "type": "string"
+                        },
+                        "DEPT_NAME_TH": {
+                            "type": "string"
+                        },
+                        "ROLE_CODE": {
+                            "type": "string"
+                        },
+                        "ROLE_NAME": {
+                            "type": "string"
+                        },
+                        "PERMISSION": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "EmployeePosResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "object",
+                    "properties": {
+                        "CODEPOS": {
+                            "type": "string"
+                        },
+                        "NAMPOST": {
+                            "type": "string"
+                        },
+                        "NAMPOSE": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "EmployeeUnderResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "object",
+                    "properties": {
+                        "EMP_ID": {
+                            "type": "string"
+                        },
+                        "EMP_FULLNAME_TH": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "ActivityLogResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "ActivateBrnSaveResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "ActivateBrnGetResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "object",
+                    "properties": {
+                        "BRN_CODE": {
+                            "type": "string"
+                        },
+                        "BRN_NAME": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "ScanTransResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "ScanTransDetailResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "object",
+                    "properties": {
+                        "EMP_ID": {
+                            "type": "string"
+                        },
+                        "USERNAME": {
+                            "type": "string"
+                        },
+                        "PIC_IN": {
+                            "type": "string"
+                        },
+                        "SCAN_IN": {
+                            "type": "string"
+                        },
+                        "PIC_OUT": {
+                            "type": "string"
+                        },
+                        "SCAN_OUT": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "RoleSaveResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "ScanTransReportResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "object",
+                    "properties": {
+                        "SCAN_DATE": {
+                            "type": "string"
+                        },
+                        "QRTIME": {
+                            "type": "string"
+                        },
+                        "EMP_ID": {
+                            "type": "string"
+                        },
+                        "USERNAME": {
+                            "type": "string"
+                        },
+                        "DIRECTION": {
+                            "type": "string"
+                        },
+                        "PIC_URL": {
+                            "type": "string"
+                        },
+                        "BRANCH": {
+                            "type": "string"
+                        },
+                        "LATITUDE": {
+                            "type": "string"
+                        },
+                        "LONGTITUDE": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "ActivityLogReportResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "object",
+                    "properties": {
+                        "AC_DATE": {
+                            "type": "string"
+                        },
+                        "EMP_ID": {
+                            "type": "string"
+                        },
+                        "SNAP_IMG": {
+                            "type": "string"
+                        },
+                        "FUNCTION": {
+                            "type": "string"
+                        },
+                        "POS_CODE_NAME": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "ActivityLogNoCameraReportResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "object",
+                    "properties": {
+                        "AC_DATE": {
+                            "type": "string"
+                        },
+                        "EMP_ID": {
+                            "type": "string"
+                        },
+                        "SNAP_IMG": {
+                            "type": "string"
+                        },
+                        "FUNCTION": {
+                            "type": "string"
+                        },
+                        "POS_CODE_NAME": {
+                            "type": "string"
+                        },
+                        "BRN_CODE_NAME": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "RoleConfigListResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "object",
+                    "properties": {
+                        "ROLE_CODE": {
+                            "type": "string"
+                        },
+                        "ROLE_NAME": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "RoleConfigSaveResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "RoleDetailResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "object",
+                    "properties": {
+                        "POS_CODE": {
+                            "type": "string"
+                        },
+                        "ROLE_CODE": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "HealthCheckResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "object",
+                    "properties": {
+                        "status": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "CheckExportFileResponse": {
+            "type": "string"
+        },
+        "ReportScanByEmployeeIdResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "object",
+                    "properties": {
+                        "BRANCH": {
+                            "type": "string"
+                        },
+                        "EMP_ID": {
+                            "type": "string"
+                        },
+                        "USERNAME": {
+                            "type": "string"
+                        },
+                        "POS_CODE_NAME": {
+                            "type": "string"
+                        },
+                        "DIRECTION": {
+                            "type": "string"
+                        },
+                        "QRTIME": {
+                            "type": "string"
+                        },
+                        "PIC_URL": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "ReportScanByManagerIdResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "object",
+                    "properties": {
+                        "BRANCH": {
+                            "type": "string"
+                        },
+                        "EMP_ID": {
+                            "type": "string"
+                        },
+                        "USERNAME": {
+                            "type": "string"
+                        },
+                        "POS_CODE_NAME": {
+                            "type": "string"
+                        },
+                        "DIRECTION": {
+                            "type": "string"
+                        },
+                        "QRTIME": {
+                            "type": "string"
+                        },
+                        "PIC_URL": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "TempStaffParam": {
+            "type": "object",
+            "properties": {
+                "EMP_ID": {
+                    "type": "string"
+                },
+                "EMP_FULLNAME_TH": {
+                    "type": "string"
+                },
+                "POS_CODE": {
+                    "type": "string"
+                },
+                "POS_NAME_TH": {
+                    "type": "string"
+                },
+                "DEPT_CODE": {
+                    "type": "string"
+                },
+                "DEPT_NAME_TH": {
+                    "type": "string"
+                },
+                "START_DATE": {
+                    "type": "string"
+                },
+                "END_DATE": {
+                    "type": "string"
+                }
+            }
+        },
+        "TempStaffResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
+        "TempStaffGetResponse": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "object",
+                    "properties": {
+                        "EMP_ID": {
+                            "type": "string"
+                        },
+                        "EMP_FULLNAME_TH": {
+                            "type": "string"
+                        },
+                        "POS_CODE": {
+                            "type": "string"
+                        },
+                        "POS_NAME_TH": {
+                            "type": "string"
+                        },
+                        "DEPT_CODE": {
+                            "type": "string"
+                        },
+                        "DEPT_NAME_TH": {
+                            "type": "string"
+                        },
+                        "START_DATE": {
+                            "type": "string"
+                        },
+                        "END_DATE": {
+                            "type": "string"
+                        }
+
+                    }
+                }
+            }
+        }
+
+    }
+}

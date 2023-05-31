@@ -1,0 +1,28 @@
+#date - version : Resson
+2021-05-06 - P01.01.0100 : Initial for production
+2021-05-18 - D01.01.0200 : For Config Conenction Pool
+2021-05-25 - P01.02.0200 : Merge D01.01.0200 ,For Report by Emp & by Manager Restore Config
+2021-05-27 - P01.02.0300 : Manage Connection Pool , Not Close everytime after using .
+2021-06-20 - P01.02.0400 : Add/Edit TempStaff
+2021-08-17 - P01.02.0500 : Locked Scan User 
+2021-09-01 - P01.02.0501 : Locked Scan User & Fix Connection Pool
+2021-09-03 - P01.02.0502 : Locked Scan User & Fix Connection Pool & Release ConnectionPool
+2021-09-08 - P01.02.0503 : Locked Scan User & Fix Connection Pool & Release ConnectionPool & Add Check ETL
+2021-09-09 - P01.02.0504 : Locked Scan User & Fix Connection Pool & Release ConnectionPool & Add Check ETL
+2021-10-02 - P01.02.0600 : Change LDAP
+2022-08-25 - U01.02.0601 : UAT deploy for test AZURE new resource group
+2022-08-25 - U01.02.0602 : Added API authentication
+2022-08-25 - U01.02.0603 : Added Swagger API document authentication [Failed]
+2022-08-25 - U01.02.0604 : Added Swagger API document authentication 2
+2022-08-26 - U01.02.0605 : Change swagger.json title and description.
+2022-09-01 - U01.02.0606 : Change swagger.json title and description[Test Azure Appservice].
+
+2022-09-23 - U01.02.0607 : Change API domain name on UAT .
+
+2022-10-04 - P01.02.0601 : Deploy for verify with production data. >> Stateless Web #1 
+2022-10-04 - P01.02.0602 : Change swagger title. >> Stateless Web #1 
+
+2022-10-04 - P01.02.0602 : Change swagger title. >> Stateless Web #1 
+
+2022-10-12 - P01.02.0603 : Change api domain to >> timeattendance-api.pt.co.th for deploy production. 
+
